@@ -1,5 +1,8 @@
 package xyz.will.blackjack;
 
+/*
+	A enumeration of possible card ranks
+*/
 public enum Rank {
 
 	ACE   (11, 0x1),
@@ -15,21 +18,24 @@ public enum Rank {
 	JACK  (10, 0xB),
 	QUEEN (10, 0xD),
 	KING  (10, 0xE);
-	
-	private int value;
-	private int offset;
-	
+
+	private int value;	// The value of a card
+	private int offset; // The unicode code point offset of the card
+
+	// Constructor for a Rank
 	private Rank(int value, int offset) {
 		this.value  = value;
 		this.offset = offset;
 	}
-	
+
+	// Get the value of a card
 	public int getValue() {
 		return value;
 	}
-	
+
+	// Get the Unicode offset of a card
 	public int getUnicodeOffset() {
 		return offset;
 	}
-	
+
 }
