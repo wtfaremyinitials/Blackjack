@@ -39,9 +39,10 @@ public class StringUtil {
     }
 
 	// Turn a Rank and a Suit into a Unicode string
+	private final int BASE_CARD_CODE_POINT = (int) 0x1F000;
 	public static String toUnicodeCard(Rank rank, Suit suit) {
 		// http://www.unicode.org/charts/PDF/U1F0A0.pdf Woo spec sheets are fun! =D
-		int codePoint = (int) 0x1F000; // The base code point for a card character
+		int codePoint = BASE_CARD_CODE_POINT; // The base code point for a card character
 		codePoint += suit.getUnicodeOffset(); // Add the suit offset
 		codePoint += rank.getUnicodeOffset(); // Add the rank offset
 		return new String(Character.toChars(codePoint)); // Convert the code point to a String

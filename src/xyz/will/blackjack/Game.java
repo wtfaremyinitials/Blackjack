@@ -13,6 +13,9 @@ public class Game {
 	private Hand dealer; // The dealer's hand
 	private Hand player; // The player's hand
 
+	private final int HIGHEST_SCORE = 21;
+	private final int DEALER_AI_HIT = 17;
+
 	// Plays a game
 	public void play() {
 		deck = new Deck(); // Create a deck
@@ -29,16 +32,16 @@ public class Game {
 
 			StringUtil.printHands(player, dealer); // Print both hands again
 
-			if(player.getScore() > 21) { // If the player goes over 21, they lose
+			if(player.getScore() > HIGHEST_SCORE) { // If the player goes over 21, they lose
 				System.out.println("You lose!");
 				return;
 			}
 		}
 
-		while(dealer.getScore() <= 17) { // While the dealer has less than 17, hit
+		while(dealer.getScore() <= DEALER_AI_HIT) { // While the dealer has less than 17, hit
 			dealer.hit(deck); // Hit
 
-			if(dealer.getScore() > 21) { // If the dealer goes over 21, they lose
+			if(dealer.getScore() > HIGHEST_SCORE) { // If the dealer goes over 21, they lose
 				System.out.println("Dealer loses!");
 				return;
 			}
@@ -47,9 +50,9 @@ public class Game {
 		// Print both hands at the end of the game
 		StringUtil.printHands(player, dealer);
 
-		if(player.getScore() > 21) // If the player went over 21, they lose
+		if(player.getScore() > HIGHEST_SCORE) // If the player went over 21, they lose
 			System.out.println("You lose!");
-		else if(player.getScore() > 21) // If the dealer went over 21, they lose
+		else if(player.getScore() > HIGHEST_SCORE) // If the dealer went over 21, they lose
 			System.out.println("Dealer loses!");
 		else if(player.getScore() == dealer.getScore())
 			System.out.println("You tie"); // If the player and the dealer had the same score, they tie
